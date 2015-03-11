@@ -23,7 +23,7 @@ public class d_SkillDisp : MonoBehaviour {
 	}
 
 	public void UpdateText(){
-		skillType = stats.UsingSkill ();
+        //skillType = stats.UsingSkill ();
 	}
 
 }

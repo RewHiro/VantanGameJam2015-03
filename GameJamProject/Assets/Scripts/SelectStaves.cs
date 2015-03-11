@@ -11,20 +11,21 @@ public class SelectStaves : MonoBehaviour {
 
 	void Start(){
 		isSelecting = false;
-		this.gameObject.SetActive (false);
 	}
 
-	void Update(){
-		eve = Event.current;
-		mousePos = eve.mousePosition;
-		this.gameObject.transform.position = (mousePos);
-		if (Input.GetMouseButtonDown(0)) {
-			isSelecting = true;
-			this.gameObject.SetActive (true);
+	void Update (){
+
+		if (Input.GetMouseButton(0)) {
+			eve = Event.current;
+			mousePos = eve.mousePosition;
+			
+			this.gameObject.transform.position = (mousePos);
+			ConsoleMousePos ();
 		} 
-		else if(Input.GetMouseButtonUp (0)){
-			isSelecting = false;
-			this.gameObject.SetActive (false);
-		}
 	}
+
+	void ConsoleMousePos(){
+		Debug.Log ("Mouse Pressed");
+	}
+
 }

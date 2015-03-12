@@ -14,19 +14,24 @@ public class typeMode : MonoBehaviour {
 		Posx = -1.3f;
 		Posy = 0.7f;
 	}
-	
+
+    public void ChangeSkill(int type)
+    {
+        if (type > 1) return;
+        this.type = type;
+    }
+
 	// Update is called once per frame
 	void Update () {	
-		if (Input.GetKeyDown (KeyCode.W)) {
-			type++;
+        //if (Input.GetKeyDown (KeyCode.W)) {
+        //    type++;
 
-			if(type > 1){
-				//Debug.Log (type);
-				type = 0;
-			}
+        //    if(type > 2){
+        //        //Debug.Log (type);
+        //        type = 0;
+        //    }
 
-			//Debug.Log(type);
-		}
-
+        //    //Debug.Log(type);
+        //}
 	}
 }

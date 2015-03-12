@@ -6,12 +6,14 @@ public class BulletBInstance : MonoBehaviour {
 	[SerializeField]
 	private GameObject Prefab = null;
 	
-	public float Posx = 0;
-	public float Posy = 0;
-	
+	public float Posx = 0.0f;
+	public float Posy = 0.0f;
+
+	public float exp = 0.0f;
+
 	public int typeShot = 0;
 
-	const int TAMAMAX = 4;
+	//const int TAMAMAX = 4;
 	
 	// Use this for initialization
 	void Start () {
@@ -21,11 +23,17 @@ public class BulletBInstance : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Z)) {
 			typeShot = GameObject.Find("BulletRoot").GetComponent<typeMode>().type;
-			Posx = GameObject.Find("BulletRoot").GetComponent<typeMode>().Posx;
-			Posy = GameObject.Find("BulletRoot").GetComponent<typeMode>().Posy;
 
 			if (typeShot == 1) {
-				for (int i = 0; i < TAMAMAX; i++) {
+				Posx = GameObject.Find("BulletRoot").GetComponent<typeMode>().Posx;
+				Posy = GameObject.Find("BulletRoot").GetComponent<typeMode>().Posy;
+
+				exp += 0.01f;
+
+				float tamaMax = exp * 0.1f + 1.0f;
+				if(tamaMax > 50){ tamaMax = 0.0f; }
+
+				for (float i = 0.0f; i < tamaMax; i++) {
 					var clone = (GameObject)Instantiate (Prefab);
 					clone.transform.position = new Vector3 (Posx, Posy, 0.0f);
 					clone.transform.SetParent (this.transform);

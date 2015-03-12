@@ -11,8 +11,8 @@ public class typeMode : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		type = 0;
-		Posx = -2.0f;
-		Posy = 0.0f;
+		Posx = 0.0f;
+		Posy = -1.0f;
 	}
 	
 	// Update is called once per frame

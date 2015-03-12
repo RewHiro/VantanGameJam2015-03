@@ -1,35 +1,71 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerStats : MonoBehaviour {
 
 	struct Status{
-		private int p_skillType;
-		private int p_souls;
-		private int p_atk;
-
-		public int skillType{
-			get {return p_skillType;}
-			set {p_skillType = value;}
-		}
+		private int sls;
 
 		public int souls{
-			get {return p_souls;}
-			set {p_souls = value;}
+			get {return sls;}
+			set {sls = value;}
 		}
 
-		public int atk{
-			get {return p_atk;}
-			set {p_atk = value;}
+		private int lvl;
+
+		public int level{
+			get {return lvl;}
+			set {lvl = value;}
 		}
+
+		private int exp;
+
+		public int experience{
+			get {return exp;}
+			set {exp = value;}
+		}
+
+		private int atkPwr;
+
+		public int attackPower{
+			get {return atkPwr;}
+			set {atkPwr = value;}
+		}
+
+		private int sklTyp;
+		
+		public int skillType{
+			get {return sklTyp;}
+			set {skillType = value;}
+		}
+		
 	};
 	
-    Status stats;
+    Status status;
+
+	[SerializeField]
+	int souls;
+	[SerializeField]
+	int level;
+	[SerializeField]
+	int experience;
+	[SerializeField]
+	int attackPower;
+	[SerializeField]
+	int skillType;
 
 	// Use this for initialization
 	void Start () {
-		stats.skillType = 1;
-		stats.souls = 0;
+		status.souls = 0;
+		status.level = 1;
+		status.experience = 0;
+		status.attackPower = 10;
+		status.skillType = 1;
+		souls = status.souls;
+		level = status.level;
+		experience = status.experience;
+		attackPower = status.attackPower;
+		skillType = status.skillType;
 	}
 	
 	// Update is called once per frame
@@ -37,22 +73,22 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public int UsingSkill(){
-		return stats.skillType;
+		return status.skillType;
 	}
 
 	public void ChangeSkill(int id){
-		stats.skillType = id;
+		status.skillType = id;
 	}
 
 	public int ReturnSouls(){
-		return stats.souls;
+		return status.souls;
 	}
 
 	public void AddSouls(int qty){
-		stats.souls += qty;
+		status.souls += qty;
 	}
 
 	public void SpendSouls(int qty){
-		stats.souls -= qty;
+		status.souls -= qty;
 	}
 }

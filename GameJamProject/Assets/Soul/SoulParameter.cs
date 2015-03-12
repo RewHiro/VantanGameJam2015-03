@@ -18,7 +18,6 @@ public class SoulParameter : MonoBehaviour {
 
     void Update()
     {
-        AddNum(1000);
     }
 
     /// <summary>

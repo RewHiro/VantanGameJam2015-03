@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour {
 		
 		public int skillType{
 			get {return sklTyp;}
-			set {skillType = value;}
+			set {sklTyp = value;}
 		}
 		
 	};

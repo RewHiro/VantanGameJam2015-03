@@ -56,11 +56,6 @@ public class PlayerStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		status.souls = 0;
-		status.level = 1;
-		status.experience = 0;
-		status.attackPower = 10;
-		status.skillType = 1;
 		souls = status.souls;
 		level = status.level;
 		experience = status.experience;

@@ -5,7 +5,7 @@ public class SelectStaves : MonoBehaviour {
 	
 	Vector2 mousePos;
 
-	public GameObject st1;
+	public GameObject st1 = null;
 	public GameObject st2;
 	public GameObject st3;
 	public GameObject st4;

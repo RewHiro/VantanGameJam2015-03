@@ -18,7 +18,7 @@ public class BulletBInstance : MonoBehaviour {
 
 	public const float TAMA_MAX = 50.0f;
 	public const float SYOKICHI = 1.0f;
-	public const float SIZE = 0.5f;
+	public const float SIZE = 3.0f;
 
 	//const int TAMAMAX = 4;
 	

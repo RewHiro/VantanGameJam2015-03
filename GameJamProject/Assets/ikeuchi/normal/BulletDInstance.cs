@@ -5,6 +5,9 @@ public class BulletDInstance : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject Prefab = null;
+
+	[SerializeField]
+	PlayerAttacker player = null;
 	
 	public float Posx = 0.0f;
 	public float Posy = 0.0f;
@@ -27,7 +30,7 @@ public class BulletDInstance : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Z)) {
+		if (player.isAttack) {
 			var typeRoot = GameObject.Find("BulletRoot").GetComponent<typeMode>();
 			typeShot = typeRoot.type;
 			if (typeShot == 3) {

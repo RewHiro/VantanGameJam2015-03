@@ -27,5 +27,10 @@ public class BulletCmove : MonoBehaviour {
 		transform.Translate (new Vector3 (Mathf.Cos (kakudo) * kasoku,
 		                                  Mathf.Sin (kakudo) * kasoku,
 		                                  0.0f));
+
+		if (countTime > 60) {
+			Destroy(gameObject);
+		}
+
 	}
 }

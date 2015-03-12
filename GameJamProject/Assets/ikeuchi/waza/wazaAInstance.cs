@@ -9,7 +9,7 @@ public class wazaAInstance : MonoBehaviour {
 	public const float Posx = 0.0f;
 	public const float Posy = 4.0f;
 
-	public float tamaSize = 0.0f;
+	public float tamaSize = 5.0f;
 
 	public int counter = 0;
 	public int countTime = 0;
@@ -18,6 +18,7 @@ public class wazaAInstance : MonoBehaviour {
 	const int HASSHA_COUNT = 90;
 	const int RENSHA = 5;
 	const int COUNT = 40;
+	const float SIZE = 3.0f;
 
     public void UseSpecialSkill()
     {
@@ -57,7 +58,7 @@ public class wazaAInstance : MonoBehaviour {
 						//Posy = Random.Range (0.5f, 1.0f);
 						var clone = (GameObject)Instantiate (Prefab);
 						clone.transform.position = new Vector3 (Posx, Posy, 0.0f);
-						clone.transform.localScale = new Vector3 (tamaSize, tamaSize, tamaSize);
+						clone.transform.localScale = new Vector3 (SIZE, SIZE, SIZE);
 						clone.transform.SetParent (this.transform);
 					}
 					counter++;

@@ -6,7 +6,8 @@ public class SoulCounter : MonoBehaviour {
 
 	Text text;
 
-	public GameObject player;
+    [SerializeField]
+    GameObject player = null;
 
 	[SerializeField]
 	int soul_count;

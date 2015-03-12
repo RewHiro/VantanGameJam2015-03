@@ -16,7 +16,6 @@ public class AttackEffectCreater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(Input.mousePosition);
         if (playerAttacker.isAttack)
         {
             var mousePosition = Input.mousePosition;

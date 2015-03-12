@@ -6,8 +6,8 @@ public class wazaAInstance : MonoBehaviour {
 	[SerializeField]
 	private GameObject Prefab = null;
 	
-	public const float Posx = 0.0f;
-	public const float Posy = 4.0f;
+	public float Posx = 0.0f;
+	public float Posy = 0.0f;
 
 	public float tamaSize = 0.0f;
 
@@ -23,10 +23,9 @@ public class wazaAInstance : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			//Posx = GameObject.Find ("BulletRoot").GetComponent<typeMode> ().Posx;
-			//Posy = GameObject.Find ("BulletRoot").GetComponent<typeMode> ().Posy;
+			Posx = GameObject.Find ("BulletRoot").GetComponent<typeMode> ().Posx;
+			Posy = GameObject.Find ("BulletRoot").GetComponent<typeMode> ().Posy;
 			onOff = true;
-			/*
 			for (int i = 0; i < 100; i++) {
 				tamaSize = Random.Range (0.5f, 1.0f);
 				//Posx = Random.Range (0.5f, 1.0f);
@@ -36,7 +35,6 @@ public class wazaAInstance : MonoBehaviour {
 				clone.transform.localScale = new Vector3 (tamaSize, tamaSize, tamaSize);
 				clone.transform.SetParent (this.transform);
 			}
-			*/
 		}
 
 		if (onOff == true) {

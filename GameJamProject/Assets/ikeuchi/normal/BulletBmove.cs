@@ -8,17 +8,9 @@ public class BulletBmove : MonoBehaviour {
 	float kasoku = 0;
 	int tuisekiTime = 0;
 
-	public const float ATTAKU = 1.0f;
-
 	// Use this for initialization
 	void Start () {
 		var enemylist = GameObject.FindGameObjectsWithTag("enemy");
-		if (enemylist.Length <= 0) {
-			enemy.transform.position = new Vector3(Random.Range(-3,3),
-			                                       Random.Range(1,3),
-			                                       0.0f);
-			return;
-		}
 		enemy = enemylist [Random .Range(0, enemylist.Length)];
 		kakudo = Random.Range (0.0f, 6.28f);
 	}

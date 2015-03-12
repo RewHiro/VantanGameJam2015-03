@@ -17,7 +17,6 @@ public class StaffRotater : MonoBehaviour {
         if (player_attacker.isAttack)
         {
             count = 0;
-            iTween.Stop();
             transform.rotation = Quaternion.identity;
             iTween.RotateTo(gameObject, iTween.Hash("z", -27.0f, "time", itweenFinishTime, "easetype", iTween.EaseType.easeOutBack));
         }

@@ -15,11 +15,15 @@ public class wazaAInstance : MonoBehaviour {
 	public int countTime = 0;
 	public bool onOff = false;
 
+	const int HASSHA_COUNT = 90;
+	const int RENSHA = 5;
+	const int COUNT = 40;
 
     public void UseSpecialSkill()
     {
         onOff = true;
     }
+
 	// Use this for initialization
 	void Start () {
 	
@@ -45,20 +49,22 @@ public class wazaAInstance : MonoBehaviour {
 		}
 
 		if (onOff == true) {
-			if(countTime % 10 == 0){
-				for (int i = 0; i < 100; i++) {
-					tamaSize = Random.Range (0.5f, 1.0f);
-					//Posx = Random.Range (0.5f, 1.0f);
-					//Posy = Random.Range (0.5f, 1.0f);
-					var clone = (GameObject)Instantiate (Prefab);
-					clone.transform.position = new Vector3 (Posx, Posy, 0.0f);
-					clone.transform.localScale = new Vector3 (tamaSize, tamaSize, tamaSize);
-					clone.transform.SetParent (this.transform);
+			if(countTime > HASSHA_COUNT){
+				if(countTime % RENSHA == 0){
+					for (int i = 0; i < 100; i++) {
+						tamaSize = Random.Range (0.5f, 1.0f);
+						//Posx = Random.Range (0.5f, 1.0f);
+						//Posy = Random.Range (0.5f, 1.0f);
+						var clone = (GameObject)Instantiate (Prefab);
+						clone.transform.position = new Vector3 (Posx, Posy, 0.0f);
+						clone.transform.localScale = new Vector3 (tamaSize, tamaSize, tamaSize);
+						clone.transform.SetParent (this.transform);
+					}
+					counter++;
 				}
-				counter++;
 			}
 			countTime++;
-			if(counter > 10){
+			if(counter > COUNT){
 				onOff = false;
 				counter = 0;
 				countTime = 0;

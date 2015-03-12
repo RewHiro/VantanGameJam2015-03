@@ -17,21 +17,21 @@ public class typeMode : MonoBehaviour {
 
     public void ChangeSkill(int type)
     {
-        if (type > 1) return;
         this.type = type;
     }
-
+	
 	// Update is called once per frame
 	void Update () {	
         //if (Input.GetKeyDown (KeyCode.W)) {
         //    type++;
 
-        //    if(type > 2){
+        //    if(type > 3){
         //        //Debug.Log (type);
         //        type = 0;
         //    }
 
         //    //Debug.Log(type);
         //}
+
 	}
 }

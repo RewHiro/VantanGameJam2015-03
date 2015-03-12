@@ -9,6 +9,8 @@ public class wazaAmove : MonoBehaviour {
 
 	int countTime = 0;
 
+	public const float ATTAKU = 5.0f;
+
 	// Use this for initialization
 	void Start () {
 		//var enemylist = GameObject.FindGameObjectsWithTag("enemy");

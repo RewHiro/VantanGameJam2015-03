@@ -62,6 +62,11 @@ public class StageInformation : MonoBehaviour {
         return (int)(FirstStageEnemyNumber * Mathf.Pow(IncreaceEnemyPowered, nowStageNumber));
     }
 
+    int fact(int enemyNumber,int factCount)
+    {
+        return (int)(30 * Mathf.Pow(1.05f, nowStageNumber));
+    }
+
 
     /// <summary>
     /// 現在ステージでのボスのHPを得る
@@ -71,8 +76,6 @@ public class StageInformation : MonoBehaviour {
     {
         return FirstStageBossHealth + AddBossHealthValue * (IncreaceBossHealthPowerd * (nowStageNumber / 5 - 1));
     }
-
-
 
 
 }

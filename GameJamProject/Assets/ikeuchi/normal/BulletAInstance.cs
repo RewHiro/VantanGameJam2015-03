@@ -27,10 +27,11 @@ public class BulletAInstance : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Z)) {
-			typeShot = GameObject.Find("BulletRoot").GetComponent<typeMode>().type;
+			var typeRoot = GameObject.Find("BulletRoot").GetComponent<typeMode>();
+			typeShot = typeRoot.type;
 			if (typeShot == 0) {
-				Posx = GameObject.Find("BulletRoot").GetComponent<typeMode>().Posx;
-				Posy = GameObject.Find("BulletRoot").GetComponent<typeMode>().Posy;
+				Posx = typeRoot.Posx;
+				Posy = typeRoot.Posy;
 
 				exp += EXP_UP;
 

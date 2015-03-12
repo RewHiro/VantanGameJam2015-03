@@ -20,7 +20,7 @@ public class typeMode : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.W)) {
 			type++;
 
-			if(type > 1){
+			if(type > 2){
 				//Debug.Log (type);
 				type = 0;
 			}

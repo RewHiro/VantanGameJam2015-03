@@ -8,6 +8,8 @@ public class BulletCmove : MonoBehaviour {
 	float kasoku = 0;
 	
 	public int countTime{ get; private set;}
+
+	public const float ATTAKU = 2.0f;
 	
 	// Use this for initialization
 	void Start () {

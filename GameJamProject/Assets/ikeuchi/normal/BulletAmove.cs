@@ -7,6 +7,8 @@ public class BulletAmove : MonoBehaviour {
 	float kakudo = 0;
 	float kasoku = 0;
 
+	public const float ATTAKU = 5.0f;
+
 	// Use this for initialization
 	void Start () {
 		var enemylist = GameObject.FindGameObjectsWithTag("enemy");

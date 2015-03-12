@@ -3,13 +3,12 @@ using System.Collections;
 
 public class TabActivator : MonoBehaviour {
 
-	public GameObject skillTab;
-	public GameObject itemTab;
-	public GameObject shopTab;
-
-	GameObject sT;
-	GameObject iT;
-	GameObject spT;
+	[SerializeField]
+	GameObject skillTab;
+	[SerializeField]
+	GameObject itemTab;
+	[SerializeField]
+	GameObject shopTab;
 
 	[SerializeField]
 	bool isSkillactive;

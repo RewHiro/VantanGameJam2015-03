@@ -56,16 +56,11 @@ public class PlayerStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		status.souls = 0;
-		status.level = 1;
-		status.experience = 0;
-		status.attackPower = 10;
-		status.skillType = 1;
-		souls = status.souls;
-		level = status.level;
-		experience = status.experience;
-		attackPower = status.attackPower;
-		skillType = status.skillType;
+		status.souls = souls;
+		status.level = level;
+		status.experience = experience;
+		status.attackPower = attackPower;
+		status.skillType = skillType;
 	}
 	
 	// Update is called once per frame

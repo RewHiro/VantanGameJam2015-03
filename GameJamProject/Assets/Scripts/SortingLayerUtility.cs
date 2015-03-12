@@ -15,9 +15,9 @@ public class SortingLayerUtility : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//enemy.GetComponent<MeshRenderer>().sortingLayerName = "Enemy";
-		door.GetComponent<MeshRenderer>().sortingLayerName = "Door";
-		skill.GetComponent<MeshRenderer>().sortingLayerName = "Skill";
-		player.GetComponent<MeshRenderer>().sortingLayerName = "Player";
+		door.GetComponent<SpriteRenderer>().sortingLayerName = "Door";
+		skill.GetComponent<SpriteRenderer>().sortingLayerName = "Skill";
+		player.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
 	}
 	
 	// Update is called once per frame

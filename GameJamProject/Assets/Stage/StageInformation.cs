@@ -11,6 +11,14 @@ public class StageInformation : MonoBehaviour {
 
     public int nowStage { get { return nowStageNumber; } }
 
+    public enum StageChangeState {
+        BeChange,
+        Changing,
+        Changed
+    }
+
+    public StageChangeState ChangeState { get; private set; }
+
     /// <summary>
     /// 第一ステージの敵の最大数
     /// </summary>
@@ -21,21 +29,40 @@ public class StageInformation : MonoBehaviour {
     /// 1ステージごとに増える敵の量
     /// </summary>
     [SerializeField]
-    private float IncreaceEnemyPowered = 1.2f;
+    private float IncreaseEnemyPowered = 1.2f;
+
+    /// <summary>
+    /// 第一ステージの敵のHP
+    /// </summary>
+    [SerializeField]
+    private int FirstStageMobHealth = 150;
 
     [SerializeField]
-    private int FirstStageBossHealth = 150;
+    private float IncreaseMobHealthPowered = 1.08f;
 
     [SerializeField]
-    private int AddBossHealthValue = 100;
+    private int IncreaseBossHealthValue = 75;
 
     [SerializeField]
-    private int IncreaceBossHealthPowerd = 2;
-    
+    private float FirstStagePlayerAttack = 5.0f;
+
+    [SerializeField]
+    private float IncreasePlayerAttackPowered = 1.05f;
+
+    /// <summary>
+    /// プレステージ数
+    /// </summary>
+    private int PrestigeCount = 0;
+
+    [SerializeField]
+    private int StageMax = 100;
+
+
 
 
 	// Use this for initialization
 	void Start () {
+        ChangeState = StageChangeState.Changed;
 	}
 	
 	// Update is called once per frame
@@ -57,9 +84,35 @@ public class StageInformation : MonoBehaviour {
     /// 現在のステージの敵の最大数を得る
     /// </summary>
     /// <returns>敵の最大数</returns>
-    public int StageEnemyNumber()
+    public float StageMobNumber()
     {
-        return (int)(FirstStageEnemyNumber * Mathf.Pow(IncreaceEnemyPowered, nowStageNumber));
+        
+        return MobNumberFact(nowStageNumber);
+    }
+
+    public int MobHealthCalculate()
+    {
+        if (nowStageNumber <= 1) return FirstStageMobHealth;
+
+        return (int)(FirstStageMobHealth * Mathf.Pow(IncreaseMobHealthPowered,nowStageNumber-1));
+
+    }
+
+    private float MobNumberFact(int stage)
+    {
+        float MobNumber = FirstStageEnemyNumber;
+        if (nowStageNumber <= 1) return MobNumber;
+
+        MobNumber = ((MobNumberFact(stage - 1) + 1) * 1.05f);
+
+        return MobNumber;
+    }
+
+    public float PlayerAttackPower()
+    {
+        if(nowStageNumber <= 1) return FirstStagePlayerAttack;
+
+        return FirstStagePlayerAttack * Mathf.Pow(IncreasePlayerAttackPowered,nowStageNumber - 1);
     }
 
 
@@ -69,10 +122,8 @@ public class StageInformation : MonoBehaviour {
     /// <returns>ボスのHP</returns>
     public int BossHealthCalculate()
     {
-        return FirstStageBossHealth + AddBossHealthValue * (IncreaceBossHealthPowerd * (nowStageNumber / 5 - 1));
+        return MobHealthCalculate() * IncreaseBossHealthValue;
     }
-
-
 
 
 }

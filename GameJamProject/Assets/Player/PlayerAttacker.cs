@@ -21,7 +21,6 @@ public class PlayerAttacker : MonoBehaviour {
         if (!(playerAttackZone.anchoredPosition3D.y < Input.mousePosition.y)) return;
         if (!(Input.mousePosition.y < playerAttackZone.sizeDelta.y)) return;
         isAttack = true;
-        Debug.Log(playerAttackZone.rect);
     }
 
 	// Update is called once per frame

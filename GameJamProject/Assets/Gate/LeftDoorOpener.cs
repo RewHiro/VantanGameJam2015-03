@@ -8,6 +8,9 @@ public class LeftDoorOpener : MonoBehaviour {
 
 
     [SerializeField]
+    private float minAngle = 0.5f;
+
+    [SerializeField]
     private float maxAngle = 180.0f;
 
 	// Use this for initialization
@@ -24,7 +27,7 @@ public class LeftDoorOpener : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            iTween.RotateTo(gameObject, iTween.Hash("y", 0.5, "time", changeTime, "easetype", iTween.EaseType.easeOutExpo));
+            iTween.RotateTo(gameObject, iTween.Hash("y", minAngle, "time", changeTime, "easetype", iTween.EaseType.easeOutExpo));
         }
     }
 

@@ -29,4 +29,20 @@ public class typeMode : MonoBehaviour {
 		}
 
 	}
+
+	public void ChangeSkill_A(){
+		type = 0;
+	}
+
+	public void ChangeSkill_B(){
+		type = 1;
+	}
+
+	public void ChangeSkill_C(){
+		type = 2;
+	}
+
+	public void ChangeSkill_D(){
+		type = 3;
+	}
 }

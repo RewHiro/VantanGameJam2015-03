@@ -17,7 +17,7 @@ public class Hit : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		if (col.gameObject.tag == "enemy") { 
 			Destroy(gameObject);
-            col.gameObject.GetComponent<EnemyLife>().Damage(1);
+            col.gameObject.GetComponent<EnemyLifeMob>().Damage(1);
 		}
 	}
 

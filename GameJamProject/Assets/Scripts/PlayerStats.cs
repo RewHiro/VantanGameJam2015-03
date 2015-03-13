@@ -50,16 +50,18 @@ public class PlayerStats : MonoBehaviour {
 	[SerializeField]
 	int experience;
 	[SerializeField]
-	int attackPower;
+	int setAttackPower;
 	[SerializeField]
 	int skillType;
+
+    public float attackPower { get; set; }
 
 	// Use this for initialization
 	void Start () {
 		souls = status.souls;
 		level = status.level;
 		experience = status.experience;
-		attackPower = status.attackPower;
+        attackPower = setAttackPower;
 		skillType = status.skillType;
 	}
 	

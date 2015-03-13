@@ -42,8 +42,10 @@ public class EnemyManager : MonoBehaviour {
   /// </summary>
   private bool isBossBattle = false;
 
-  private StageInformation stageInfo = null;
+  [SerializeField]
+  StageInformation stageInfo = null;
 
+  SoulCreator soulCreator = null;
 
   void Start()
   {
@@ -51,7 +53,6 @@ public class EnemyManager : MonoBehaviour {
     if (spawnLimit < 1) spawnLimit = 1;
     if (liveEnemy > 0) liveEnemy = 0;
 
-    stageInfo = FindObjectOfType(typeof(StageInformation)) as StageInformation;
   }
 
   void Update()

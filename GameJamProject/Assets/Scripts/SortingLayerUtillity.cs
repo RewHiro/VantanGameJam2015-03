@@ -4,19 +4,11 @@ using System.Collections;
 public class SortingLayerUtillity : MonoBehaviour {
 
     [SerializeField]
-    GameObject door = null;
-
-    [SerializeField]
-    GameObject skill = null;
-
-    [SerializeField]
-    GameObject player = null;
+    GameObject backGround = null;
 
 	// Use this for initialization
 	void Start () {
-        door.GetComponent<SpriteRenderer>().sortingLayerName = "Door";
-        skill.GetComponent<SpriteRenderer>().sortingLayerName = "Skill";
-        player.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+    backGround.GetComponent<MeshRenderer>().sortingLayerName = "backGround";
 	}
 	
 	// Update is called once per frame

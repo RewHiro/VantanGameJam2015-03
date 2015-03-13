@@ -72,12 +72,17 @@ public class StageInformation : MonoBehaviour {
     [SerializeField]
     private int StageMax = 100;
 
+    private StageBackGroundParameter backGround = null;
+
     	// Use this for initialization
 	void Start () {
         ChangeState = StageChangeState.Changing;
+
+        enemyMngr = GameObject.FindObjectOfType(typeof(EnemyManager)) as EnemyManager;
         leftGate = GameObject.FindObjectOfType(typeof(LeftDoorOpener)) as LeftDoorOpener;
         rightGate = GameObject.FindObjectOfType(typeof(RightDoorOpener)) as RightDoorOpener;
-        enemyMngr = GameObject.FindObjectOfType(typeof(EnemyManager)) as EnemyManager;
+        backGround = GetComponent<StageBackGroundParameter>();
+        backGround.ChangeData();
 	}
 	
 	// Update is called once per frame
@@ -117,6 +122,7 @@ public class StageInformation : MonoBehaviour {
     public void GoNextStage()
     {
         nowStageNumber++;
+        backGround.ChangeData();
 
         ChangeState = StageChangeState.BeChange;
     }
@@ -172,15 +178,21 @@ public class StageInformation : MonoBehaviour {
         return MobNumber;
     }
 
+
+    /// <summary>
+    /// プレイヤー攻撃力を表す
+    /// </summary>
+    public float playerAttackPower { get; private set; }
+
     /// <summary>
     /// プレイヤーの攻撃力を計算する関数です
     /// </summary>
     /// <returns>プレイヤーの攻撃力</returns>
-    public float PlayerAttackPower()
+    private void PlayerAttackPowerCalculate()
     {
-        if(nowStageNumber <= 1) return FirstStagePlayerAttack;
+        if(nowStageNumber <= 1) playerAttackPower = FirstStagePlayerAttack;
 
-        return FirstStagePlayerAttack * Mathf.Pow(IncreasePlayerAttackPowered,nowStageNumber - 1);
+        playerAttackPower = FirstStagePlayerAttack * Mathf.Pow(IncreasePlayerAttackPowered,nowStageNumber - 1);
     }
 
     /// <summary>
@@ -191,6 +203,28 @@ public class StageInformation : MonoBehaviour {
     {
         return MobHealthCalculate() * IncreaseBossHealthValue;
     }
+
+    /// <summary>
+    /// 現在ステージでの敵1人が落とすソウル量を決める
+    /// </summary>
+    /// <returns>ソウル量</returns>
+    public int MobSoulCalculate()
+    {
+        var Base = 5;
+        return (int)(Base * Mathf.Pow(1.02f, nowStageNumber));
+    }
+
+    /// <summary>
+    /// エクストリーム（必殺技）の総攻撃力を得る
+    /// </summary>
+    /// <returns>必殺技の攻撃力</returns>
+    public int ExtremeDamageCalculate()
+    {
+        var IncreaseValue = 2;
+        return BossHealthCalculate() * IncreaseValue;
+    }
+
+
 
 
 }

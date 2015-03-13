@@ -9,12 +9,17 @@ public class EnemyLifeMob : MonoBehaviour {
   [SerializeField]
   private float alphaTime = 1.0f;
 
+  StageInformation stageInfo = null;
+  SoulCreator soulCreator = null;
+
   private bool isDead = false;
   private EnemyManager manager = null;
 
   void Start()
   {
     manager = FindObjectOfType(typeof(EnemyManager)) as EnemyManager;
+    stageInfo = FindObjectOfType(typeof(StageInformation)) as StageInformation;
+    soulCreator = FindObjectOfType(typeof(SoulCreator)) as SoulCreator;
   }
 
   void Update()
@@ -26,6 +31,8 @@ public class EnemyLifeMob : MonoBehaviour {
   {
     isDead = true;
 
+    soulCreator.Create(new SoulCreator.CreateData(5, stageInfo.MobSoulCalculate(), transform.position));
+    
     manager.EnemyDead();
     GameObject.Destroy(gameObject, alphaTime);
 

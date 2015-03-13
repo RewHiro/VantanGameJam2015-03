@@ -41,9 +41,8 @@ public class SoulCreator : MonoBehaviour {
             clone.transform.SetParent(transform);
             var rectTrans = clone.transform as RectTransform;
 
-            var createPos = Camera.main.WorldToScreenPoint(data.createPos);
-            createPos.z = 1.0f;
-            rectTrans.transform.position = Camera.main.ScreenToWorldPoint(createPos);
+            var pos = Camera.main.WorldToScreenPoint(data.createPos);
+            clone.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(pos.x, pos.y,1));
             rectTrans.localScale = new Vector3(1,1,1);
             clone.GetComponent<SoulMover>().SetSoulValue(data.soulValue);
         }

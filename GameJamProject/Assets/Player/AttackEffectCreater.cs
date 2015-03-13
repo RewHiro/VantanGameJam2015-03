@@ -9,6 +9,12 @@ public class AttackEffectCreater : MonoBehaviour {
     [SerializeField]
     GameObject attackEffect = null;
 
+    [SerializeField]
+    SoundEffectPlayer sePlayer = null;
+
+    [SerializeField]
+    string tapSoundResName = string.Empty;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -22,6 +28,8 @@ public class AttackEffectCreater : MonoBehaviour {
             mousePosition.z = 90.0f;
             var effectPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             Instantiate(attackEffect, effectPosition, Quaternion.identity);
+
+            sePlayer.Play(tapSoundResName);
         }
 	}
 }

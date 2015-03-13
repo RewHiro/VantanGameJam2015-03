@@ -165,7 +165,7 @@ public class StageInformation : MonoBehaviour {
     private float MobNumberFact(int stage)
     {
         float MobNumber = FirstStageEnemyNumber;
-        if (nowStageNumber <= 1) return MobNumber;
+        if (stage <= 1) return MobNumber;
 
         MobNumber = ((MobNumberFact(stage - 1) + 1) * 1.05f);
 

@@ -109,4 +109,20 @@ public class BGMPlayer : MonoBehaviour
             Source.Stop();
         }
     }
+
+    /// <summary>
+    /// ミュート解除
+    /// </summary>
+    public void MuteUnavailable()
+    {
+        Source.mute = false;
+    }
+
+    /// <summary>
+    /// ミュート
+    /// </summary>
+    public void Mute()
+    {
+        Source.mute = true;
+    }
 }

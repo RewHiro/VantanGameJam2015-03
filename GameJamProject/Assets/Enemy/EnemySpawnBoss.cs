@@ -19,15 +19,28 @@ public class EnemySpawnBoss : MonoBehaviour {
 
   void Update()
   {
-    if (!manager.BossStage() || !manager.IsMobExtinction()) return;
+    if (!manager.IsMobExtinction()) return;
 
-    SetBossData();
+
+    if(manager.BossStage())
+    {
+      SetBossData();
+    }
   }
 
   public void SetBossData()
   {
     if (isSpawn) return;
+
+    StartCoroutine("StartCreate");
+
+    manager.InitLimitTime();
     isSpawn = true;
+  }
+
+  IEnumerator StartCreate()
+  {
+    yield return new WaitForSeconds(3.0f);
 
     var clone = (GameObject)Instantiate(prefab, transform.position, transform.rotation);
     clone.name = prefab.name;

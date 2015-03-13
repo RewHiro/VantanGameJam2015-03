@@ -8,7 +8,7 @@ public class wazaBTueInstance : MonoBehaviour {
 	
 	public const float Posx = 0.0f;
 	public const float Posy = 4.0f;
-	
+
 	// Use this for initialization
 	void Start () {
 		

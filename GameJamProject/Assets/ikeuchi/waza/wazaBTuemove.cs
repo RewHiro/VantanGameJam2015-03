@@ -11,6 +11,9 @@ public class wazaBTuemove : MonoBehaviour {
 	const float STOPER = 6.0f;
 
 	bool rightLeft = false;
+
+	const int ATTAKU_START_TIME = 120;
+	const int SKILL_TIME = 430;
 	
 	// Use this for initialization
 	void Start () {
@@ -19,7 +22,7 @@ public class wazaBTuemove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (countTime < 120) {
+		if (countTime < ATTAKU_START_TIME) {
 			if (transform.position.y > 3.0f) {
 				transform.Translate (new Vector3 (0.0f, -0.1f, 0.0f));
 			}
@@ -29,7 +32,7 @@ public class wazaBTuemove : MonoBehaviour {
 				}
 			}
 		}
-		else if (countTime >= 120 && countTime < 730) {
+		else if (countTime >= ATTAKU_START_TIME && countTime < SKILL_TIME) {
 			if(rightLeft == false){
 				transform.Translate (new Vector3 (0.0f, SPEED, 0.0f));
 			}

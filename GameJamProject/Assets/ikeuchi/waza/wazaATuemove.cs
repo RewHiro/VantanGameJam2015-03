@@ -15,8 +15,8 @@ public class wazaATuemove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (countTime < DELETE_COUNT) {
-			if(transform.position.y > 2.0f){
-				transform.Translate(new Vector3(0.0f,-0.1f,0.0f));
+			if(transform.position.y > 1.0f){
+				transform.Translate(new Vector3(0.0f,-0.2f,0.0f));
 			} 
 		}
 		else {

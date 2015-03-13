@@ -9,7 +9,7 @@ public class EnemyMoveBoss : MonoBehaviour {
   [SerializeField]
   private float moveSpeedMax = 0.0f;
 
-  private const float POS_Y = 0.0f;
+  private const float POS_Y = 1.0f;
   
   void Start()
   {

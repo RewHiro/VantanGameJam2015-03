@@ -55,6 +55,8 @@ public class StageInformation : MonoBehaviour {
     [SerializeField]
     private float needChangingTime = 0.0f;
 
+    private EnemyManager enemyMngr = null;
+
 
     /// <summary>
     /// 地獄の門の参照
@@ -75,6 +77,7 @@ public class StageInformation : MonoBehaviour {
         ChangeState = StageChangeState.Changing;
         leftGate = GameObject.FindObjectOfType(typeof(LeftDoorOpener)) as LeftDoorOpener;
         rightGate = GameObject.FindObjectOfType(typeof(RightDoorOpener)) as RightDoorOpener;
+        enemyMngr = GameObject.FindObjectOfType(typeof(EnemyManager)) as EnemyManager;
 	}
 	
 	// Update is called once per frame
@@ -100,7 +103,7 @@ public class StageInformation : MonoBehaviour {
         {
             nowChangingTime += Time.deltaTime;
         }
-        if(JudgeGoNext())
+        if(ChangeState == StageChangeState.Changed && JudgeGoNext())
         {
             GoNextStage();
         }
@@ -123,7 +126,7 @@ public class StageInformation : MonoBehaviour {
     /// </summary>
     public bool JudgeGoNext()
     {
-        if(Input.GetKeyDown(KeyCode.N))
+        if(enemyMngr.IsEnemyExtinction())
         {
             return true;
         }
@@ -162,7 +165,7 @@ public class StageInformation : MonoBehaviour {
     private float MobNumberFact(int stage)
     {
         float MobNumber = FirstStageEnemyNumber;
-        if (nowStageNumber <= 1) return MobNumber;
+        if (stage <= 1) return MobNumber;
 
         MobNumber = ((MobNumberFact(stage - 1) + 1) * 1.05f);
 

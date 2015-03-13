@@ -30,7 +30,7 @@ public class EnemyLifeMob : MonoBehaviour {
     GameObject.Destroy(gameObject, alphaTime);
 
     iTween.FadeTo(gameObject, iTween.Hash("alpha", 0,
-                                          "time", alphaTime,
+                                          "time", alphaTime-0.02,
                                           "easetype", iTween.EaseType.easeInCubic));
   }
 

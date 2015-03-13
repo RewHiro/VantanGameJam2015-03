@@ -30,6 +30,7 @@ public class EnemySpawnMob : MonoBehaviour {
 
   void Update()
   {
+    
     if (!IsAbleToSpawn() || !manager.IsAbleToSpawnMob() || stageInfo.ChangeState != StageInformation.StageChangeState.Changed) return;
 
     SetInterval();

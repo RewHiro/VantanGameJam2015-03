@@ -11,7 +11,7 @@ public class EnemyMoveGround : MonoBehaviour {
 
   private const float X_RANGE = 3.0f;
   private const float X_OFFSET = 2.0f;
-  private const float POS_Y = 0.0f;
+  private const float POS_Y = -0.5f;
 
   void Start()
   {

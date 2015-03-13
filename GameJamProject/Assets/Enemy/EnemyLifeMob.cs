@@ -7,7 +7,10 @@ public class EnemyLifeMob : MonoBehaviour {
   private int health = 1;
 
   [SerializeField]
-  private float alphaTime = 0.0f;
+  private float alphaTime = 1.0f;
+
+  StageInformation stageInfo = null;
+  SoulCreator soulCreator = null;
 
   private bool isDead = false;
   private EnemyManager manager = null;
@@ -15,6 +18,8 @@ public class EnemyLifeMob : MonoBehaviour {
   void Start()
   {
     manager = FindObjectOfType(typeof(EnemyManager)) as EnemyManager;
+    stageInfo = FindObjectOfType(typeof(StageInformation)) as StageInformation;
+    soulCreator = FindObjectOfType(typeof(SoulCreator)) as SoulCreator;
   }
 
   void Update()
@@ -26,17 +31,16 @@ public class EnemyLifeMob : MonoBehaviour {
   {
     isDead = true;
 
+    soulCreator.Create(new SoulCreator.CreateData(5, stageInfo.MobSoulCalculate(), transform.position));
+    
     manager.EnemyDead();
     GameObject.Destroy(gameObject, alphaTime);
 
     iTween.FadeTo(gameObject, iTween.Hash("alpha", 0,
-                                          "time", alphaTime,
+                                          "time", alphaTime-0.02,
                                           "easetype", iTween.EaseType.easeInCubic));
   }
 
-  /// <summary>
-  /// こいつは死んでしまった！
-  /// </summary>
   public bool IsDead()
   {
     return health <= 0;

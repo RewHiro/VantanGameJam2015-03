@@ -108,7 +108,7 @@ public class StageInformation : MonoBehaviour {
         {
             nowChangingTime += Time.deltaTime;
         }
-        if(JudgeGoNext())
+        if(ChangeState == StageChangeState.Changed && JudgeGoNext())
         {
             GoNextStage();
         }
@@ -208,10 +208,10 @@ public class StageInformation : MonoBehaviour {
     /// 現在ステージでの敵1人が落とすソウル量を決める
     /// </summary>
     /// <returns>ソウル量</returns>
-    public long MobSoulCalculate()
+    public int MobSoulCalculate()
     {
         var Base = 5;
-        return (long)(Base * Mathf.Pow(1.02f, nowStageNumber));
+        return (int)(Base * Mathf.Pow(1.02f, nowStageNumber));
     }
 
     /// <summary>

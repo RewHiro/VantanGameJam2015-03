@@ -9,7 +9,7 @@ public class wazaATuemove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        GetComponent<Renderer>().sortingLayerName = "Staff";
 	}
 	
 	// Update is called once per frame

@@ -42,27 +42,45 @@ public class EnemyManager : MonoBehaviour {
   /// </summary>
   private bool isBossBattle = false;
 
+  [SerializeField]
+  StageInformation stageInfo = null;
+
+  SoulCreator soulCreator = null;
 
   void Start()
   {
     if (bossStageRatio <= 1) bossStageRatio = 2;
     if (spawnLimit < 1) spawnLimit = 1;
     if (liveEnemy > 0) liveEnemy = 0;
+
   }
 
   void Update()
   {
     if (encounterTime > 0.0f) encounterTime -= Time.deltaTime;
     if (IsTimeOver()) isBossBattle = false;
-  }
-  
-  private bool BossStage()
-  {
-    var stage = FindObjectOfType(typeof(StageInformation)) as StageInformation;
-    if (stage.nowStage <= 1) return false;
 
-    return (stage.nowStage % bossStageRatio) == 0;
+    if(stageInfo.ChangeState == StageInformation.StageChangeState.Changing )
+    {
+      SetSpawnCount();
+    }
   }
+
+  public void InitLimitTime()
+  {
+    encounterTime = bossEncounterLimit;
+  }
+  public bool BossStage()
+  {
+    if (stageInfo.nowStage <= 1) return false;
+
+    return (stageInfo.nowStage % bossStageRatio) == 0;
+  }
+
+	public bool IsMobExtinction()
+	{
+		return spawnCount <= 0 && liveEnemy <= 0;
+	}
 
   // StageManager
   /// <summary>
@@ -70,9 +88,11 @@ public class EnemyManager : MonoBehaviour {
   /// </summary>
   public bool IsEnemyExtinction()
   {
-    if (!BossStage()) return spawnCount <= 0;
+    if (!BossStage()) return IsMobExtinction();
 
     var boss = FindObjectOfType(typeof(EnemyLifeBoss)) as EnemyLifeBoss;
+    if (!boss) return false;
+
     return boss.IsDead();
   }
 
@@ -82,8 +102,7 @@ public class EnemyManager : MonoBehaviour {
   /// </summary>
   public void SetSpawnCount()
   {
-    var stage = FindObjectOfType(typeof(StageInformation)) as StageInformation;
-    spawnCount = (int)stage.StageMobNumber();
+    spawnCount = (int)stageInfo.StageMobNumber();
   }
 
   // UI
@@ -92,6 +111,7 @@ public class EnemyManager : MonoBehaviour {
   /// </summary>
   public void BossSpawnSwitch()
   {
+    if (isBossBattle) return;
     if (encounterTime > 0.0f && !BossStage()) return;
 
     encounterTime = bossEncounterLimit;
@@ -135,9 +155,11 @@ public class EnemyManager : MonoBehaviour {
   /// </summary>
   public bool IsTimeOver()
   {
-    if (!BossStage()) return false;
+    if (!BossStage() || encounterTime > 0.0f) return false;
 
     var boss = FindObjectOfType(typeof(EnemyLifeBoss)) as EnemyLifeBoss;
-    return (encounterTime <= 0.0f && !boss.IsDead());
+    if (!boss) return false;
+    
+    return !boss.IsDead();
   }
 }

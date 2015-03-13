@@ -10,7 +10,7 @@ public class EnemyMoveFly : MonoBehaviour {
   private float moveSpeedMax = 0.0f;
 
   private const float X_RANGE = 3.0f;
-  private const float POS_Y = 3.5f;
+  private const float POS_Y = 4.0f;
   
   void Start()
   {

@@ -15,7 +15,7 @@ public class wazaAmove : MonoBehaviour {
 	void Start () {
 		//var enemylist = GameObject.FindGameObjectsWithTag("enemy");
 		//enemy = enemylist [Random .Range(0, enemylist.Length)];
-		kakudo = Random.Range (0.0f, 6.28f);
+		kakudo = Random.Range (-0.5f, 1.0f);
 	}
 	
 	// Update is called once per frame

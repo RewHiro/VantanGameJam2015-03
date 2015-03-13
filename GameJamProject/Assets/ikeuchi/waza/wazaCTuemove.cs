@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class wazaATuemove : MonoBehaviour {
+public class wazaCTuemove : MonoBehaviour {
 
 	int countTime = 0;
-
-	const int DELETE_COUNT = 310;
-
+	
+	const int DELETE_COUNT = 390;
+	
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame

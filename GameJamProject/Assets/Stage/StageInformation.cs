@@ -55,6 +55,8 @@ public class StageInformation : MonoBehaviour {
     [SerializeField]
     private float needChangingTime = 0.0f;
 
+    private EnemyManager enemyMngr = null;
+
 
     /// <summary>
     /// 地獄の門の参照
@@ -75,6 +77,8 @@ public class StageInformation : MonoBehaviour {
     	// Use this for initialization
 	void Start () {
         ChangeState = StageChangeState.Changing;
+
+        enemyMngr = GameObject.FindObjectOfType(typeof(EnemyManager)) as EnemyManager;
         leftGate = GameObject.FindObjectOfType(typeof(LeftDoorOpener)) as LeftDoorOpener;
         rightGate = GameObject.FindObjectOfType(typeof(RightDoorOpener)) as RightDoorOpener;
         backGround = GetComponent<StageBackGroundParameter>();
@@ -128,7 +132,7 @@ public class StageInformation : MonoBehaviour {
     /// </summary>
     public bool JudgeGoNext()
     {
-        if(Input.GetKeyDown(KeyCode.N))
+        if(enemyMngr.IsEnemyExtinction())
         {
             return true;
         }

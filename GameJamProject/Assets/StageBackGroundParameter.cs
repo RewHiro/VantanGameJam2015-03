@@ -31,7 +31,7 @@ public class StageBackGroundParameter : MonoBehaviour {
     Image backGroundImage = null;
     int nextIndex = 0;
 
-    void Start()
+    void Awake()
     {
         backGroundImage = uiBackGround.GetComponent<Image>();
     }

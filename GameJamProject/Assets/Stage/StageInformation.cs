@@ -35,7 +35,7 @@ public class StageInformation : MonoBehaviour {
     /// 第一ステージの敵のHP
     /// </summary>
     [SerializeField]
-    private int FirstStageMobHealth = 4;
+    private int FirstStageMobHealth = 150;
 
     [SerializeField]
     private float IncreaseMobHealthPowered = 1.08f;

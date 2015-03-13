@@ -20,7 +20,7 @@ public class BulletAInstance : MonoBehaviour {
 
 	public const float EXP_UP = 0.01f;
 	public const float BAIRITU = 0.1f;
-	public const float SYOKI_SIZE = 3.0f;
+	public const float SYOKI_SIZE = 0.2f;
 
 	// Use this for initialization
 	void Start () {

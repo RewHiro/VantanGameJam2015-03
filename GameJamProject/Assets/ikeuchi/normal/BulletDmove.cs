@@ -9,10 +9,15 @@ public class BulletDmove : MonoBehaviour {
 
 	int countTime = 0;
 
-	public const float ATTAKU = 0.1f;
+	float damageSum = 0;
+	public float ATTAKU = 5.0f / 5.0f;
 
 	// Use this for initialization
 	void Start () {
+		var damage = FindObjectOfType (typeof(StageInformation)) as StageInformation;
+		damageSum = damage.nowStage * 5.0f;
+		ATTAKU = damageSum / 5.0f;
+
 		var enemylist = GameObject.FindGameObjectsWithTag("enemy");
 		if (enemylist.Length <= 0) {
 			enemy.transform.position = new Vector3(Random.Range(-3.0f,5.0f),
@@ -36,6 +41,6 @@ public class BulletDmove : MonoBehaviour {
 		
 		transform.Translate (new Vector3 (Mathf.Cos (kakudo) * kasoku,
 		                                  Mathf.Sin (kakudo) * kasoku,
-		                                  0.0f));
+		                                  (Mathf.Cos (kakudo) + Mathf.Sin (kakudo)) * kasoku));
 	}
 }

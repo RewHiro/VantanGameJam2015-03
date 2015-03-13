@@ -14,7 +14,7 @@ public class wazaBInstance : MonoBehaviour {
 	bool onOff = false;
 	bool rightLeft = false;
 
-	public const float tamaSize = 0.5f;
+	public const float tamaSize = 0.2f;
 
 	const float SPEED = 0.7f;
 	const float STOPER = 6.0f;
@@ -26,7 +26,7 @@ public class wazaBInstance : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 
 	public void SetBool(){

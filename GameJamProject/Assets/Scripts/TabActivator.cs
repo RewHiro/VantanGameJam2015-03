@@ -7,38 +7,38 @@ public class TabActivator : MonoBehaviour {
 	GameObject skillTab = null;
 
     [SerializeField]
-	GameObject itemTab = null;
+	GameObject specialTab = null;
 
     [SerializeField]
 	GameObject shopTab = null;
 
 	[SerializeField]
-	bool isSkillactive;
+	bool isSkillActive;
 	[SerializeField]
-	bool isItemactive;
+	bool isSpecialActive;
 	[SerializeField]
-	bool isShopactive;
+	bool isShopActive;
 	
 	void Start () {
-		isSkillactive = true;
-		isItemactive = false;
-		isShopactive = false;
+		isSkillActive = true;
+		isSpecialActive = false;
+		isShopActive = false;
 	}
 
 	void Update(){
-		if (isSkillactive) {
+		if (isSkillActive) {
 			skillTab.SetActive (true);
 		}else {
 			skillTab.SetActive (false);
 		}
 
-		if (isItemactive) {
-			itemTab.SetActive (true);
+		if (isSpecialActive) {
+			specialTab.SetActive (true);
 		}else {
-			itemTab.SetActive (false);
+			specialTab.SetActive (false);
 		}
 
-		if (isShopactive) {
+		if (isShopActive) {
 			shopTab.SetActive (true);
 		}else {
 			shopTab.SetActive (false);
@@ -46,21 +46,21 @@ public class TabActivator : MonoBehaviour {
 	}
 
 	public void ActivateSkill(){
-		if (!isSkillactive) {
-			isSkillactive = true;
-			isItemactive = false;
-			isShopactive = false;
+		if (!isSkillActive) {
+			isSkillActive = true;
+			isSpecialActive = false;
+			isShopActive = false;
 		} 
 		else {
 			//Do Nothing
 		}
 	}
 
-	public void ActivateItem(){
-		if (!isItemactive) {
-			isSkillactive = false;
-			isItemactive = true;
-			isShopactive = false;
+	public void ActivateSpecial(){
+		if (!isSpecialActive) {
+			isSkillActive = false;
+			isSpecialActive = true;
+			isShopActive = false;
 		} 
 		else {
 			//Do Nothing
@@ -68,10 +68,10 @@ public class TabActivator : MonoBehaviour {
 	}
 
 	public void ActivateShop(){
-		if (!isSkillactive) {
-			isSkillactive = false;
-			isItemactive = false;
-			isShopactive = true;
+		if (!isShopActive) {
+			isSkillActive = false;
+			isSpecialActive = false;
+			isShopActive = true;
 		} 
 		else {
 			//Do Nothing

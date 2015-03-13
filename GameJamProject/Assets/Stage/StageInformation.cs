@@ -207,7 +207,7 @@ public class StageInformation : MonoBehaviour {
     /// <summary>
     /// 現在ステージでの敵1人が落とすソウル量を決める
     /// </summary>
-    /// <returns>ソウル量</returns>
+    /// <returns>獲得ソウル量</returns>
     public long MobSoulCalculate()
     {
         var Base = 5;
@@ -219,6 +219,15 @@ public class StageInformation : MonoBehaviour {
     /// </summary>
     /// <returns>必殺技の攻撃力</returns>
     public int ExtremeDamageCalculate()
+    {
+        return BossHealthCalculate();
+    }
+
+    /// <summary>
+    /// エクストリーム(必殺技)発動に必要なソウル量
+    /// </summary>
+    /// <returns>必要ソウル量</returns>
+    public int NeedExtremesSouls()
     {
         var IncreaseValue = 2;
         return BossHealthCalculate() * IncreaseValue;

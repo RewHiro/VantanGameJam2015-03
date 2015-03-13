@@ -79,4 +79,26 @@ public class SoundEffectPlayer : MonoBehaviour {
 
         return false;
     }
+
+    /// <summary>
+    /// すべてをミュート解除
+    /// </summary>
+    public void AllMuteUnavailable()
+    {
+        foreach (var source in Sources)
+        {
+            source.mute = false;
+        }
+    }
+
+    /// <summary>
+    /// すべてをミュートする
+    /// </summary>
+    public void AllMute()
+    {
+        foreach (var source in Sources)
+        {
+            source.mute = true;
+        }
+    }
 }

@@ -5,7 +5,7 @@ public class SoulCreator : MonoBehaviour {
 
     public struct CreateData
     {
-        public CreateData(int num,int soulValue,Vector3 createPos)
+        public CreateData(int num,int soulValue,Vector3 createPos):this()
         {
             this.num = num;
             this.soulValue = soulValue;

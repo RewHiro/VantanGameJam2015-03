@@ -10,10 +10,18 @@ public class BulletBmove : MonoBehaviour {
 
 	int deleteTime = 0;
 
-	public const float ATTAKU = 1.0f;
+	float damageSum = 0.0f;
+	float tamaNum = 0.0f;
+	public float ATTAKU = 5.0f / 2.0f;
 
 	// Use this for initialization
 	void Start () {
+		tamaNum = GameObject.Find("BulletRootB").GetComponent<BulletBInstance>().tamaMax;
+		var damage = FindObjectOfType (typeof(StageInformation)) as StageInformation;
+		damageSum = damage.nowStage * 5.0f;
+		//Debug.Log (damageSum);
+		ATTAKU = damageSum / tamaNum;
+
 		var enemylist = GameObject.FindGameObjectsWithTag("enemy");
 		if (enemylist.Length <= 0) {
 			enemy.transform.position = new Vector3(Random.Range(-3.0f,5.0f),
@@ -38,7 +46,7 @@ public class BulletBmove : MonoBehaviour {
 		kasoku += 0.01f;
 		transform.Translate (new Vector3 (Mathf.Cos (kakudo) * kasoku,
 		                                  Mathf.Sin (kakudo) * kasoku,
-		                                  0.0f));
+		                                  (Mathf.Cos (kakudo) + Mathf.Sin (kakudo)) * kasoku));
 
 		if (tuisekiTime > 80) {
 			Destroy(gameObject);

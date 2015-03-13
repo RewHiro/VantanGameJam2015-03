@@ -18,7 +18,7 @@ public class BulletDInstance : MonoBehaviour {
 
 	public const float EXP_UP = 0.01f;
 	public const float BAIRITU = 0.2f;
-	public const float TAMA_SIZE = 0.5f;
+	public const float TAMA_SIZE = 0.2f;
 	public const float TAMA_MAX = 50.0f;
 	public const float SYOKICHI = 1.0f;
 	public const float SIZE = 0.5f;

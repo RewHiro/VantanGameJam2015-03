@@ -220,11 +220,14 @@ public class StageInformation : MonoBehaviour {
     /// <returns>必殺技の攻撃力</returns>
     public int ExtremeDamageCalculate()
     {
+        return BossHealthCalculate();
+    }
+
+    public int NeedExtremesSouls()
+    {
         var IncreaseValue = 2;
         return BossHealthCalculate() * IncreaseValue;
     }
-
-
 
 
 }

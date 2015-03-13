@@ -23,12 +23,16 @@ public class wazaBInstance : MonoBehaviour {
 	void Start () {
 	
 	}
+
+	public void SetBool(){
+		onOff = true;
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.E)) {
-			onOff = true;
-		}
+		//if (Input.GetKeyDown (KeyCode.E)) {
+		//	onOff = true;
+		//}
 
 		if (onOff == true) {
 			countTime++;

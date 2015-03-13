@@ -16,11 +16,20 @@ public class wazaBTueInstance : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		/*
 		if (Input.GetKeyDown (KeyCode.E)) {
 			var clone = (GameObject)Instantiate (Prefab);
 			clone.transform.position = new Vector3 (0.0f, 10.0f, 0.0f);
 			clone.transform.localScale = new Vector3 (5.0f, 5.0f, 5.0f);
 			clone.transform.SetParent (this.transform);
 		}
+		*/
+	}
+
+	public void SetTue(){
+		var clone = (GameObject)Instantiate (Prefab);
+		clone.transform.position = new Vector3 (0.0f, 10.0f, 0.0f);
+		clone.transform.localScale = new Vector3 (5.0f, 5.0f, 5.0f);
+		clone.transform.SetParent (this.transform);
 	}
 }

@@ -7,7 +7,7 @@ public class StageInformation : MonoBehaviour {
     /// 現在のステージ数
     /// </summary>
     [SerializeField]
-    private int nowStageNumber = 0;
+    private int nowStageNumber = 1;
 
     public int nowStage { get { return nowStageNumber; } }
 
@@ -49,6 +49,19 @@ public class StageInformation : MonoBehaviour {
     [SerializeField]
     private float IncreasePlayerAttackPowered = 1.05f;
 
+    [SerializeField]
+    private float nowChangingTime = 0.0f;
+
+    [SerializeField]
+    private float needChangingTime = 0.0f;
+
+
+    /// <summary>
+    /// 地獄の門の参照
+    /// </summary>
+    private LeftDoorOpener leftGate = null;
+    private RightDoorOpener rightGate = null;
+
     /// <summary>
     /// プレステージ数
     /// </summary>
@@ -57,17 +70,41 @@ public class StageInformation : MonoBehaviour {
     [SerializeField]
     private int StageMax = 100;
 
-
-
-
-	// Use this for initialization
+    	// Use this for initialization
 	void Start () {
-        ChangeState = StageChangeState.Changed;
+        ChangeState = StageChangeState.Changing;
+        leftGate = GameObject.FindObjectOfType(typeof(LeftDoorOpener)) as LeftDoorOpener;
+        rightGate = GameObject.FindObjectOfType(typeof(RightDoorOpener)) as RightDoorOpener;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    
+	    if(nowChangingTime > needChangingTime)
+        {
+            leftGate.DoorOpen();
+            rightGate.DoorOpen();
+
+            ChangeState = StageChangeState.Changed;
+            nowChangingTime = 0.0f;
+        }
+
+        if(ChangeState == StageChangeState.BeChange)
+        {
+            leftGate.DoorClose();
+            rightGate.DoorClose();
+
+            ChangeState = StageChangeState.Changing;
+        }
+
+	    if(ChangeState == StageChangeState.Changing)
+        {
+            nowChangingTime += Time.deltaTime;
+        }
+        if(JudgeGoNext())
+        {
+            GoNextStage();
+        }
+
 	}
     
     /// <summary>
@@ -77,19 +114,38 @@ public class StageInformation : MonoBehaviour {
     public void GoNextStage()
     {
         nowStageNumber++;
+
+        ChangeState = StageChangeState.BeChange;
+    }
+
+    /// <summary>
+    /// 次ステージに行くかどうかをチェックする
+    /// </summary>
+    public bool JudgeGoNext()
+    {
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            return true;
+        }
+
+        return false;
     }
 
 
     /// <summary>
     /// 現在のステージの敵の最大数を得る
     /// </summary>
-    /// <returns>敵の最大数</returns>
+    /// <returns>mobの最大数</returns>
     public float StageMobNumber()
-    {
-        
+    {        
         return MobNumberFact(nowStageNumber);
     }
 
+
+    /// <summary>
+    /// MobのHPを計算して返します
+    /// </summary>
+    /// <returns>mobのHP</returns>
     public int MobHealthCalculate()
     {
         if (nowStageNumber <= 1) return FirstStageMobHealth;
@@ -98,6 +154,11 @@ public class StageInformation : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Mobの最大数を求める再帰関数
+    /// </summary>
+    /// <param name="stage">現在のステージ数</param>
+    /// <returns>敵の数</returns>
     private float MobNumberFact(int stage)
     {
         float MobNumber = FirstStageEnemyNumber;
@@ -108,13 +169,16 @@ public class StageInformation : MonoBehaviour {
         return MobNumber;
     }
 
+    /// <summary>
+    /// プレイヤーの攻撃力を計算する関数です
+    /// </summary>
+    /// <returns>プレイヤーの攻撃力</returns>
     public float PlayerAttackPower()
     {
         if(nowStageNumber <= 1) return FirstStagePlayerAttack;
 
         return FirstStagePlayerAttack * Mathf.Pow(IncreasePlayerAttackPowered,nowStageNumber - 1);
     }
-
 
     /// <summary>
     /// 現在ステージでのボスのHPを得る

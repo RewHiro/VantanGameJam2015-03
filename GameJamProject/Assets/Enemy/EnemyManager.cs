@@ -56,7 +56,7 @@ public class EnemyManager : MonoBehaviour {
     if (IsTimeOver()) isBossBattle = false;
   }
   
-  private bool BossStage()
+  public bool BossStage()
   {
     var stage = FindObjectOfType(typeof(StageInformation)) as StageInformation;
     if (stage.nowStage <= 1) return false;
@@ -64,13 +64,18 @@ public class EnemyManager : MonoBehaviour {
     return (stage.nowStage % bossStageRatio) == 0;
   }
 
+	public bool IsMobExtinction()
+	{
+		return spawnCount <= 0 && liveEnemy <= 0;
+	}
+
   // StageManager
   /// <summary>
   /// 敵が全滅したら true を返す
   /// </summary>
   public bool IsEnemyExtinction()
   {
-    if (!BossStage()) return spawnCount <= 0;
+    if (!BossStage()) return IsMobExtinction();
 
     var boss = FindObjectOfType(typeof(EnemyLifeBoss)) as EnemyLifeBoss;
     return boss.IsDead();
@@ -92,6 +97,7 @@ public class EnemyManager : MonoBehaviour {
   /// </summary>
   public void BossSpawnSwitch()
   {
+    if (isBossBattle) return;
     if (encounterTime > 0.0f && !BossStage()) return;
 
     encounterTime = bossEncounterLimit;
@@ -135,9 +141,9 @@ public class EnemyManager : MonoBehaviour {
   /// </summary>
   public bool IsTimeOver()
   {
-    if (!BossStage()) return false;
+    if (!BossStage() || encounterTime > 0.0f) return false;
 
     var boss = FindObjectOfType(typeof(EnemyLifeBoss)) as EnemyLifeBoss;
-    return (encounterTime <= 0.0f && !boss.IsDead());
+    return boss.IsDead();
   }
 }

@@ -7,7 +7,7 @@ public class EnemyLifeMob : MonoBehaviour {
   private int health = 1;
 
   [SerializeField]
-  private float alphaTime = 0.0f;
+  private float alphaTime = 1.0f;
 
   private bool isDead = false;
   private EnemyManager manager = null;
@@ -34,9 +34,6 @@ public class EnemyLifeMob : MonoBehaviour {
                                           "easetype", iTween.EaseType.easeInCubic));
   }
 
-  /// <summary>
-  /// こいつは死んでしまった！
-  /// </summary>
   public bool IsDead()
   {
     return health <= 0;

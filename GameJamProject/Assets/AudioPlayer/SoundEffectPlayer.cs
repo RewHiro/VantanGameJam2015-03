@@ -31,7 +31,7 @@ public class SoundEffectPlayer : MonoBehaviour {
     /// 再生
     /// </summary>
     /// <param name="resName">Resource名</param>
-    public void Play(string resName,float pitch = 1.0f)
+    public void Play(string resName)
     {
         if (!AudioMap.ContainsKey(resName))
         {
@@ -41,7 +41,6 @@ public class SoundEffectPlayer : MonoBehaviour {
         Sources.Add(gameObject.AddComponent<AudioSource>());
         var index = Sources.Count - 1;
         Sources[index].clip = AudioMap[resName].Clip;
-        Sources[index].pitch = pitch;
         Sources[index].volume = MaxVolume;
         Sources[index].Play();
 

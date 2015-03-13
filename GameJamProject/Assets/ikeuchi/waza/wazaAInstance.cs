@@ -18,7 +18,7 @@ public class wazaAInstance : MonoBehaviour {
 	const int HASSHA_COUNT = 90;
 	const int RENSHA = 5;
 	const int COUNT = 400;
-	const float SIZE = 0.5f;
+	const float SIZE = 0.2f;
 
 	const int DELETE_COUNT = 310;
 
@@ -29,7 +29,7 @@ public class wazaAInstance : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame

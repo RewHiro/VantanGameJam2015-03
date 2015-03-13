@@ -9,10 +9,17 @@ public class BulletAmove : MonoBehaviour {
 
 	int deleteTime = 0;
 
-	public const float ATTAKU = 5.0f;
+	float damageSum = 0;
+	public float ATTAKU = 5.0f;
 
 	// Use this for initialization
 	void Start () {
+
+		var damage = FindObjectOfType (typeof(StageInformation)) as StageInformation;
+		damageSum = damage.nowStage * 5.0f;
+		//Debug.Log (damageSum);
+		ATTAKU = damageSum;
+
 		var enemylist = GameObject.FindGameObjectsWithTag("enemy");
 		if (enemylist.Length <= 0) {
 			return;
@@ -31,7 +38,9 @@ public class BulletAmove : MonoBehaviour {
 
 		transform.Translate (new Vector3 (Mathf.Cos (kakudo) * kasoku,
 		                                  Mathf.Sin (kakudo) * kasoku,
-		                                  0.0f));
+		                                  (Mathf.Cos (kakudo) + Mathf.Sin (kakudo)) * kasoku));
+
+		//iTween.MoveUpdate (gameObject, iTween.Hash ("position", enemy.transform.position, "time", 4.0f));
 
 		deleteTime++;
 		if (deleteTime > 60) {

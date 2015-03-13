@@ -9,12 +9,22 @@ public class BulletCmove : MonoBehaviour {
 	
 	public int countTime{ get; private set;}
 
-	public const float ATTAKU = 2.0f;
-	
+	float damageSum = 0.0f;
+	float tamaNum = 0.0f;
+	public float ATTAKU = 5.0f / 10.0f;
+
+
+
 	// Use this for initialization
 	void Start () {
+		tamaNum = GameObject.Find("BulletRootC").GetComponent<BulletCInstance>().tamaMax;
+		var damage = FindObjectOfType (typeof(StageInformation)) as StageInformation;
+		damageSum = damage.nowStage * 5.0f;
+		//Debug.Log (damageSum);
+		ATTAKU = damageSum / tamaNum;
+
 		countTime = 0;
-		kakudo = Random.Range (0.0f, 2.5f);
+		kakudo = Random.Range (-0.3f, 1.8f);
 		//		enemy = GameObject.Find ("enemy");
 	}
 	

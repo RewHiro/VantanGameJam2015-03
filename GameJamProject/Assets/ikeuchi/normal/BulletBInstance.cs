@@ -14,11 +14,13 @@ public class BulletBInstance : MonoBehaviour {
 
 	public float exp = 0.0f;
 
+	public float tamaMax = 0.0f;
+
 	public int typeShot = 0;
 
 	public const float TAMA_MAX = 50.0f;
 	public const float SYOKICHI = 1.0f;
-	public const float SIZE = 3.0f;
+	public const float SIZE = 0.2f;
 
 	//const int TAMAMAX = 4;
 	
@@ -38,7 +40,7 @@ public class BulletBInstance : MonoBehaviour {
 
 				exp += 0.01f;
 
-				float tamaMax = exp * 0.1f + SYOKICHI;
+				tamaMax = exp * 0.1f + SYOKICHI;
 				if(tamaMax > TAMA_MAX){ tamaMax = TAMA_MAX; }
 
 				for (float i = 0.0f; i < tamaMax; i++) {

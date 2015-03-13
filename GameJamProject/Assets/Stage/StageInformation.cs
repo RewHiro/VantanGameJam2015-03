@@ -178,15 +178,21 @@ public class StageInformation : MonoBehaviour {
         return MobNumber;
     }
 
+
+    /// <summary>
+    /// プレイヤー攻撃力を表す
+    /// </summary>
+    public float playerAttackPower { get; private set; }
+
     /// <summary>
     /// プレイヤーの攻撃力を計算する関数です
     /// </summary>
     /// <returns>プレイヤーの攻撃力</returns>
-    public float PlayerAttackPower()
+    private void PlayerAttackPowerCalculate()
     {
-        if(nowStageNumber <= 1) return FirstStagePlayerAttack;
+        if(nowStageNumber <= 1) playerAttackPower = FirstStagePlayerAttack;
 
-        return FirstStagePlayerAttack * Mathf.Pow(IncreasePlayerAttackPowered,nowStageNumber - 1);
+        playerAttackPower = FirstStagePlayerAttack * Mathf.Pow(IncreasePlayerAttackPowered,nowStageNumber - 1);
     }
 
     /// <summary>

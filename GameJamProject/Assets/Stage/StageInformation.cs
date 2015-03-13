@@ -70,11 +70,15 @@ public class StageInformation : MonoBehaviour {
     [SerializeField]
     private int StageMax = 100;
 
+    private StageBackGroundParameter backGround = null;
+
     	// Use this for initialization
 	void Start () {
         ChangeState = StageChangeState.Changing;
         leftGate = GameObject.FindObjectOfType(typeof(LeftDoorOpener)) as LeftDoorOpener;
         rightGate = GameObject.FindObjectOfType(typeof(RightDoorOpener)) as RightDoorOpener;
+        backGround = GetComponent<StageBackGroundParameter>();
+        backGround.ChangeData();
 	}
 	
 	// Update is called once per frame
@@ -114,6 +118,7 @@ public class StageInformation : MonoBehaviour {
     public void GoNextStage()
     {
         nowStageNumber++;
+        backGround.ChangeData();
 
         ChangeState = StageChangeState.BeChange;
     }

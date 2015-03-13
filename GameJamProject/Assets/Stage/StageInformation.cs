@@ -192,6 +192,27 @@ public class StageInformation : MonoBehaviour {
         return MobHealthCalculate() * IncreaseBossHealthValue;
     }
 
+    /// <summary>
+    /// 現在ステージでの敵1人が落とすソウル量を決める
+    /// </summary>
+    /// <returns>ソウル量</returns>
+    public long MobSoulCalculate()
+    {
+        var Base = 5;
+        return (long)(Base * Mathf.Pow(1.02f, nowStageNumber));
+    }
+
+    /// <summary>
+    /// エクストリーム（必殺技）の総攻撃力を得る
+    /// </summary>
+    /// <returns>必殺技の攻撃力</returns>
+    public int ExtremeDamageCalculate()
+    {
+        var IncreaseValue = 2;
+        return BossHealthCalculate() * IncreaseValue;
+    }
+
+
 
 
 }

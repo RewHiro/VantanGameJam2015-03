@@ -12,11 +12,15 @@ public class wazaBmove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		kakudo = Random.Range (0.0f, 6.28f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		kasoku += 0.01f;
+		transform.Translate (new Vector3 (Mathf.Cos(kakudo) * kasoku,
+		                                  Mathf.Sin(kakudo) * kasoku,
+		                                  0.0f));
 		if (countTime > 60) {
 			Destroy(gameObject);
 		}

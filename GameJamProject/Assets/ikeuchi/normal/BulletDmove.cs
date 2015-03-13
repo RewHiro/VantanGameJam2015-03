@@ -9,7 +9,7 @@ public class BulletDmove : MonoBehaviour {
 
 	int countTime = 0;
 
-	public const float ATTAKU = 0.1f;
+	public float ATTAKU = 5.0f / 50.0f;
 
 	// Use this for initialization
 	void Start () {

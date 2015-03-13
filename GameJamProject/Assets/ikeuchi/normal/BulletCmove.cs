@@ -9,7 +9,7 @@ public class BulletCmove : MonoBehaviour {
 	
 	public int countTime{ get; private set;}
 
-	public const float ATTAKU = 2.0f;
+	public float ATTAKU = 5.0f / 5.0f * 2.0f;
 	
 	// Use this for initialization
 	void Start () {

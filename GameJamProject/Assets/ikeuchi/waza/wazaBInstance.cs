@@ -19,6 +19,11 @@ public class wazaBInstance : MonoBehaviour {
 	const float SPEED = 0.7f;
 	const float STOPER = 6.0f;
 
+	const int TAMA_MAX = 25;
+
+	const int ATTAKU_START_TIME = 120;
+	const int SKILL_TIME = 430;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -36,10 +41,10 @@ public class wazaBInstance : MonoBehaviour {
 
 		if (onOff == true) {
 			countTime++;
-			if (countTime < 120) {
+			if (countTime < ATTAKU_START_TIME) {
 				Posy = 3.0f;
 			}
-			else if(countTime >= 120 && countTime < 730){
+			else if(countTime >= ATTAKU_START_TIME && countTime < SKILL_TIME){
 				if(rightLeft == false){
 					Posx -= SPEED;
 				}
@@ -58,7 +63,7 @@ public class wazaBInstance : MonoBehaviour {
 					Posy = 3.0f;
 				}
 
-				for(int i = 0; i < 50; i++){
+				for(int i = 0; i < TAMA_MAX; i++){
 					var clone = (GameObject)Instantiate (Prefab);
 					clone.transform.position = new Vector3 (Posx, Posy, 0.0f);
 					clone.transform.localScale = new Vector3 (tamaSize, tamaSize, tamaSize);

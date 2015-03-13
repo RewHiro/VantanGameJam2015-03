@@ -10,7 +10,7 @@ public class BulletBmove : MonoBehaviour {
 
 	int deleteTime = 0;
 
-	public const float ATTAKU = 1.0f;
+	public float ATTAKU = 5.0f / 5.0f;
 
 	// Use this for initialization
 	void Start () {
